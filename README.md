@@ -52,7 +52,7 @@ This project is inspired by real experiences of accompanying family members to l
 
 ## 📷 Screenshots
 
-_(Screenshots will be added here as the UI develops.)_
+> ![KrishiSahayak](image.png)
 
 ## 📜 License
 
