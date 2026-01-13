@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KrishiSahayak - Connecting Farmers & Buyers</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="logo.png" type="image/x-icon">
+</head>
+
+<body class="bg-gray-50">
+
+    <!-- HEADER -->
+    <header class="bg-green-600 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-6">
+            <h1 class="text-3xl md:text-4xl font-bold">🌾 KrishiSahayak</h1>
+            <p class="text-green-100 mt-2 text-lg">Connecting farmers and buyers directly with fair market prices</p>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="bg-gradient-to-b from-green-50 to-white py-12 md:py-16">
+        <div class="container mx-auto px-4 text-center max-w-4xl">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                Empowering Farmers, Enabling Fair Trade
+            </h2>
+            <p class="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed">
+                Middlemen take unfair profits while farmers struggle with low prices.
+                KrishiSahayak provides market price guidance and connects farmers directly with local buyers,
+                ensuring fair prices for both parties.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button onclick="scrollToSection('farmer-section')"
+                    class="bg-green-600 hover:bg-green-700 text-white font-semibold py-4 px-8 rounded-lg text-lg shadow-lg transition">
+                    📝 List Your Produce
+                </button>
+                <button onclick="scrollToSection('buyer-section')"
+                    class="bg-white hover:bg-gray-50 text-green-600 font-semibold py-4 px-8 rounded-lg text-lg border-2 border-green-600 shadow-lg transition">
+                    🛒 Browse Produce
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS SECTION -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-10">How It Works</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Step 1 -->
+                <div class="text-center p-6 bg-green-50 rounded-lg">
+                    <div class="text-5xl mb-4">👨‍🌾</div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">1. Farmer Lists Produce</h3>
+                    <p class="text-gray-600">Farmers enter product details, quantity, and location</p>
+                </div>
+                <!-- Step 2 -->
+                <div class="text-center p-6 bg-green-50 rounded-lg">
+                    <div class="text-5xl mb-4">💰</div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">2. Get Market Price Guidance</h3>
+                    <p class="text-gray-600">System suggests fair market prices to help farmers decide</p>
+                </div>
+                <!-- Step 3 -->
+                <div class="text-center p-6 bg-green-50 rounded-lg">
+                    <div class="text-5xl mb-4">🤝</div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">3. Direct Buyer Contact</h3>
+                    <p class="text-gray-600">Buyers browse and contact farmers directly for fair deals</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FARMER LISTING SECTION -->
+    <section id="farmer-section" class="py-12 bg-gray-50">
+        <div class="container mx-auto px-4 max-w-3xl">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">List Your Produce</h2>
+            <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                <form id="produceForm" class="space-y-6">
+                    <!-- Farmer Name -->
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2 text-lg">Farmer Name</label>
+                        <input type="text" id="farmerName" required
+                            class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-green-500 focus:outline-none text-lg">
+                    </div>
+
+                    <!-- Product Name -->
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2 text-lg">Product Name</label>
+                        <select id="productName" required
+                            class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-green-500 focus:outline-none text-lg"
+                            onchange="updateMarketPrice()">
+                            <option value="">Select Product</option>
+                            <option value="Wheat" data-price="25">Wheat</option>
+                            <option value="Rice" data-price="40">Rice</option>
+                            <option value="Potato" data-price="18">Potato</option>
+                            <option value="Tomato" data-price="30">Tomato</option>
+                            <option value="Onion" data-price="22">Onion</option>
+                            <option value="Sugarcane" data-price="32">Sugarcane</option>
+                        </select>
+                    </div>
+
+                    <!-- Quantity -->
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2 text-lg">Quantity (kg)</label>
+                        <input type="number" id="quantity" required min="1"
+                            class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-green-500 focus:outline-none text-lg">
+                    </div>
+
+                    <!-- Location -->
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2 text-lg">Location (Village/Area)</label>
+                        <input type="text" id="location" required
+                            class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-green-500 focus:outline-none text-lg">
+                    </div>
+
+                    <!-- Market Price (Auto-filled) -->
+                    <div class="bg-green-50 p-4 rounded-lg">
+                        <label class="block text-gray-700 font-semibold mb-2 text-lg">Suggested Market Price (per
+                            kg)</label>
+                        <input type="text" id="marketPrice" readonly
+                            class="w-full px-4 py-3 bg-gray-100 border-2 border-gray-300 rounded-lg text-lg font-bold text-green-700"
+                            placeholder="Select a product">
+                        <p class="text-sm text-gray-600 mt-2">💡 This is the current fair market price for reference</p>
+                    </div>
+
+                    <!-- Final Price -->
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2 text-lg">Your Asking Price (per kg)</label>
+                        <input type="number" id="finalPrice" required min="1"
+                            class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-green-500 focus:outline-none text-lg">
+                    </div>
+
+                    <!-- Contact Number -->
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2 text-lg">Contact Number</label>
+                        <input type="tel" id="contactNumber" required pattern="[0-9]{10}"
+                            class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-green-500 focus:outline-none text-lg"
+                            placeholder="10-digit mobile number">
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit"
+                        class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-6 rounded-lg text-lg shadow-lg transition">
+                        ✅ List Produce
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- BUYER BROWSE SECTION -->
+    <section id="buyer-section" class="py-12 bg-white">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Available Produce</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- Product Card 1 -->
+                <div class="bg-white border-2 border-gray-200 rounded-lg p-6 shadow-lg hover:shadow-xl transition">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-2xl font-bold text-gray-800">🌾 Wheat</h3>
+                        <span class="bg-green-100 text-green-800 font-bold px-3 py-1 rounded-full text-sm">Fresh</span>
+                    </div>
+                    <div class="space-y-3 mb-6">
+                        <p class="text-gray-700"><span class="font-semibold">Quantity:</span> 500 kg</p>
+                        <p class="text-gray-700"><span class="font-semibold">Price:</span> <span
+                                class="text-2xl font-bold text-green-600">₹24/kg</span></p>
+                        <p class="text-gray-700"><span class="font-semibold">Location:</span> Jalandhar, Punjab</p>
+                        <p class="text-gray-700"><span class="font-semibold">Farmer:</span> Balwinder Singh</p>
+                    </div>
+                    <button onclick="contactFarmer('Balwinder Singh', '+91-98765-43210')"
+                        class="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-4 rounded-lg transition">
+                        📞 Contact Farmer
+                    </button>
+                </div>
+
+                <!-- Product Card 2 -->
+                <div class="bg-white border-2 border-gray-200 rounded-lg p-6 shadow-lg hover:shadow-xl transition">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-2xl font-bold text-gray-800">🍚 Rice</h3>
+                        <span class="bg-green-100 text-green-800 font-bold px-3 py-1 rounded-full text-sm">Fresh</span>
+                    </div>
+                    <div class="space-y-3 mb-6">
+                        <p class="text-gray-700"><span class="font-semibold">Quantity:</span> 300 kg</p>
+                        <p class="text-gray-700"><span class="font-semibold">Price:</span> <span
+                                class="text-2xl font-bold text-green-600">₹38/kg</span></p>
+                        <p class="text-gray-700"><span class="font-semibold">Location:</span> Ludhiana, Punjab</p>
+                        <p class="text-gray-700"><span class="font-semibold">Farmer:</span> Harpreet Kaur</p>
+                    </div>
+                    <button onclick="contactFarmer('Harpreet Kaur', '+91-98123-45678')"
+                        class="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-4 rounded-lg transition">
+                        📞 Contact Farmer
+                    </button>
+                </div>
+
+                <!-- Product Card 3 -->
+                <div class="bg-white border-2 border-gray-200 rounded-lg p-6 shadow-lg hover:shadow-xl transition">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-2xl font-bold text-gray-800">🥔 Potato</h3>
+                        <span class="bg-green-100 text-green-800 font-bold px-3 py-1 rounded-full text-sm">Fresh</span>
+                    </div>
+                    <div class="space-y-3 mb-6">
+                        <p class="text-gray-700"><span class="font-semibold">Quantity:</span> 800 kg</p>
+                        <p class="text-gray-700"><span class="font-semibold">Price:</span> <span
+                                class="text-2xl font-bold text-green-600">₹17/kg</span></p>
+                        <p class="text-gray-700"><span class="font-semibold">Location:</span> Amritsar, Punjab</p>
+                        <p class="text-gray-700"><span class="font-semibold">Farmer:</span> Rajinder Kumar</p>
+                    </div>
+                    <button onclick="contactFarmer('Rajinder Kumar', '+91-99887-76543')"
+                        class="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-4 rounded-lg transition">
+                        📞 Contact Farmer
+                    </button>
+                </div>
+
+                <!-- Product Card 4 -->
+                <div class="bg-white border-2 border-gray-200 rounded-lg p-6 shadow-lg hover:shadow-xl transition">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-2xl font-bold text-gray-800">🍅 Tomato</h3>
+                        <span class="bg-green-100 text-green-800 font-bold px-3 py-1 rounded-full text-sm">Fresh</span>
+                    </div>
+                    <div class="space-y-3 mb-6">
+                        <p class="text-gray-700"><span class="font-semibold">Quantity:</span> 200 kg</p>
+                        <p class="text-gray-700"><span class="font-semibold">Price:</span> <span
+                                class="text-2xl font-bold text-green-600">₹28/kg</span></p>
+                        <p class="text-gray-700"><span class="font-semibold">Location:</span> Patiala, Punjab</p>
+                        <p class="text-gray-700"><span class="font-semibold">Farmer:</span> Amarjit Singh</p>
+                    </div>
+                    <button onclick="contactFarmer('Amarjit Singh', '+91-97654-32109')"
+                        class="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-4 rounded-lg transition">
+                        📞 Contact Farmer
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-800 text-white py-6 mt-12">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-lg">🌾 KrishiSahayak - Farmer's Friend</p>
+            <p class="text-gray-400 mt-2">Empowering farmers, one harvest at a time</p>
+        </div>
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html>
