@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KrishiSahayak - Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="logo.png" type="image/x-icon">
+</head>
+
+<body class="bg-gray-50">
+
+    <!-- HEADER -->
+    <header class="sticky top-0 z-50 bg-green-600 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-4 md:py-6">
+            <div class="flex justify-between items-center">
+                <div class="flex-1">
+                    <h1 class="text-2xl md:text-4xl font-bold">🌾 KrishiSahayak</h1>
+                    <p class="hidden md:block text-green-100 mt-2 text-lg">Connecting farmers and buyers directly with
+                        fair market prices</p>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="md:hidden text-3xl ml-4 focus:outline-none">
+                    ☰
+                </button>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-8 text-lg">
+                    <a href="index.html" class="hover:underline flex items-center space-x-2">
+                        <span>🏠</span>
+                        <span>Home</span>
+                    </a>
+                    <a href="index.html#buyer-section" class="hover:underline flex items-center space-x-2">
+                        <span>🛒</span>
+                        <span>Browse</span>
+                    </a>
+                    <a href="login.html" class="hover:underline font-bold flex items-center space-x-2">
+                        <span>🔐</span>
+                        <span>Login</span>
+                    </a>
+                    <a href="signup.html" class="hover:underline flex items-center space-x-2">
+                        <span>✏️</span>
+                        <span>Signup</span>
+                    </a>
+                </nav>
+
+                <!-- Mobile Navigation -->
+                <nav id="mobileMenu"
+                    class="hidden md:hidden absolute top-full left-0 right-0 bg-green-700 flex flex-col space-y-2 p-4">
+                    <a href="index.html" class="hover:bg-green-800 px-4 py-2 rounded flex items-center space-x-2">
+                        <span>🏠</span>
+                        <span>Home</span>
+                    </a>
+                    <a href="index.html#buyer-section"
+                        class="hover:bg-green-800 px-4 py-2 rounded flex items-center space-x-2">
+                        <span>🛒</span>
+                        <span>Browse</span>
+                    </a>
+                    <a href="login.html"
+                        class="hover:bg-green-800 px-4 py-2 rounded font-bold flex items-center space-x-2">
+                        <span>🔐</span>
+                        <span>Login</span>
+                    </a>
+                    <a href="signup.html" class="hover:bg-green-800 px-4 py-2 rounded flex items-center space-x-2">
+                        <span>✏️</span>
+                        <span>Signup</span>
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- LOGIN SECTION -->
+    <section class="py-12 bg-gray-50 min-h-[calc(100vh-200px)] flex items-center justify-center">
+        <div class="container mx-auto px-4 max-w-md">
+            <div class="bg-white rounded-lg shadow-xl p-8 md:p-10">
+
+                <!-- Login Header -->
+                <div class="mb-10 text-center">
+                    <div class="text-6xl mb-4">👤</div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-3">Welcome Back</h2>
+                    <p class="text-gray-600">Login to your KrishiSahayak account</p>
+                </div>
+
+                <!-- Login Form -->
+                <form id="loginForm" class="space-y-6">
+
+                    <!-- Phone Number -->
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2 text-lg">Phone Number</label>
+                        <input type="tel" id="phoneNumber" name="phoneNumber" required pattern="[0-9]{10}"
+                            class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-green-500 focus:outline-none text-lg transition"
+                            placeholder="10-digit mobile number">
+                        <p class="text-sm text-gray-500 mt-1">The phone number you registered with</p>
+                    </div>
+
+                    <!-- Password -->
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2 text-lg">Password</label>
+                        <div class="relative">
+                            <input type="password" id="password" name="password" required
+                                class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-green-500 focus:outline-none text-lg transition"
+                                placeholder="Enter your password">
+                            <button type="button" onclick="togglePasswordVisibility()"
+                                class="absolute right-4 top-3 text-gray-600 text-xl hover:text-gray-800">
+                                👁️
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Remember Me & Forgot Password -->
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center">
+                            <input type="checkbox" id="rememberMe" name="rememberMe"
+                                class="w-4 h-4 text-green-600 rounded focus:ring-green-500 cursor-pointer">
+                            <label for="rememberMe" class="ml-2 text-gray-700">Remember me</label>
+                        </div>
+                        <a href="#" class="text-green-600 hover:underline text-sm font-semibold">Forgot password?</a>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit"
+                        class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-6 rounded-lg text-lg shadow-lg transition transform hover:scale-105">
+                        🔓 Login
+                    </button>
+
+                    <!-- Signup Link -->
+                    <p class="text-center text-gray-700 mt-6">
+                        Don't have an account? <a href="signup.html"
+                            class="text-green-600 font-semibold hover:underline">Sign up here</a>
+                    </p>
+                </form>
+
+                <!-- Info Box -->
+                <div class="mt-8 bg-green-50 border-l-4 border-green-600 p-4 rounded">
+                    <p class="text-sm text-gray-700">
+                        <span class="font-semibold text-green-700">💡 Demo Credentials:</span><br>
+                        Phone: 9876543210<br>
+                        Password: password123
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="sticky top-0 z-50 bg-gray-800 text-white py-6 mt-12">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-lg">🌾 KrishiSahayak - Farmer's Friend</p>
+            <p class="text-gray-400 mt-2">Empowering farmers, one harvest at a time</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Toggle password visibility
+        function togglePasswordVisibility() {
+            const passwordInput = document.getElementById('password');
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+            } else {
+                passwordInput.type = 'password';
+            }
+        }
+
+        // Auto-format phone numbers
+        document.getElementById('phoneNumber').addEventListener('input', function (e) {
+            e.target.value = e.target.value.replace(/\D/g, '').slice(0, 10);
+        });
+
+        // Login form validation
+        document.getElementById('loginForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const phoneNumber = document.getElementById('phoneNumber').value.trim();
+            const password = document.getElementById('password').value;
+            const rememberMe = document.getElementById('rememberMe').checked;
+
+            // Validation
+            if (phoneNumber.length !== 10) {
+                alert('Please enter a valid 10-digit phone number');
+                return;
+            }
+
+            if (!password) {
+                alert('Please enter your password');
+                return;
+            }
+
+            // Get users from localStorage
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+
+            // Add demo user for testing
+            if (users.length === 0) {
+                users.push({
+                    userType: 'farmer',
+                    fullName: 'Demo User',
+                    email: 'demo@krishisahayak.com',
+                    phoneNumber: '9876543210',
+                    address: 'Demo Village, Demo City',
+                    whatsappNumber: '',
+                    password: 'password123'
+                });
+            }
+
+            // Find user with matching phone number and password
+            const user = users.find(u => u.phoneNumber === phoneNumber && u.password === password);
+
+            if (user) {
+                // Store login info in session
+                sessionStorage.setItem('currentUser', JSON.stringify(user));
+
+                if (rememberMe) {
+                    localStorage.setItem('rememberedPhone', phoneNumber);
+                }
+
+                alert(`Welcome back, ${user.fullName}!`);
+                window.location.href = 'index.html';
+            } else {
+                alert('Invalid phone number or password. Please try again.');
+                document.getElementById('password').value = '';
+            }
+        });
+
+        // Pre-fill phone number if "Remember Me" was checked
+        window.addEventListener('load', function () {
+            const rememberedPhone = localStorage.getItem('rememberedPhone');
+            if (rememberedPhone) {
+                document.getElementById('phoneNumber').value = rememberedPhone;
+            }
+        });
+    </script>
+</body>
+
+</html>

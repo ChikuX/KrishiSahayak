@@ -10,13 +10,64 @@
     <link rel="shortcut icon" href="logo.png" type="image/x-icon">
 </head>
 
-<body class="bg-gray-50">
+<body class="bg-gray-50 HOME">
 
     <!-- HEADER -->
-    <header class="bg-green-600 text-white shadow-lg">
-        <div class="container mx-auto px-4 py-6">
-            <h1 class="text-3xl md:text-4xl font-bold">🌾 KrishiSahayak</h1>
-            <p class="text-green-100 mt-2 text-lg">Connecting farmers and buyers directly with fair market prices</p>
+    <header class="sticky top-0 z-50 bg-green-600 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-4 md:py-6">
+            <div class="flex justify-between items-center">
+                <div class="flex-1">
+                    <h1 class="text-2xl md:text-4xl font-bold">🌾 KrishiSahayak</h1>
+                    <p class="hidden md:block text-green-100 mt-2 text-lg">Connecting farmers and buyers directly with
+                        fair market prices</p>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="md:hidden text-3xl ml-4 focus:outline-none">
+                    ☰
+                </button>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-8 text-lg">
+                    <a href="#HOME" class="hover:underline flex items-center space-x-2">
+                        <span>🏠</span>
+                        <span>Home</span>
+                    </a>
+                    <a href="#buyer-section" class="hover:underline flex items-center space-x-2">
+                        <span>🛒</span>
+                        <span>Browse</span>
+                    </a>
+                    <a href="login.html" class="hover:underline flex items-center space-x-2">
+                        <span>🔐</span>
+                        <span>Login</span>
+                    </a>
+                    <a href="signup.html" class="hover:underline flex items-center space-x-2">
+                        <span>✏️</span>
+                        <span>Signup</span>
+                    </a>
+                </nav>
+
+                <!-- Mobile Navigation -->
+                <nav id="mobileMenu"
+                    class="hidden md:hidden absolute top-full left-0 right-0 bg-green-700 flex flex-col space-y-2 p-4">
+                    <a href="#HOME" class="hover:bg-green-800 px-4 py-2 rounded flex items-center space-x-2">
+                        <span>🏠</span>
+                        <span>Home</span>
+                    </a>
+                    <a href="#buyer-section" class="hover:bg-green-800 px-4 py-2 rounded flex items-center space-x-2">
+                        <span>🛒</span>
+                        <span>Browse</span>
+                    </a>
+                    <a href="login.html" class="hover:bg-green-800 px-4 py-2 rounded flex items-center space-x-2">
+                        <span>🔐</span>
+                        <span>Login</span>
+                    </a>
+                    <a href="signup.html" class="hover:bg-green-800 px-4 py-2 rounded flex items-center space-x-2">
+                        <span>✏️</span>
+                        <span>Signup</span>
+                    </a>
+                </nav>
+            </div>
         </div>
     </header>
 
@@ -236,13 +287,14 @@
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-gray-800 text-white py-6 mt-12">
+    <footer class="sticky top-0 z-50 bg-gray-800 text-white py-6 mt-12">
         <div class="container mx-auto px-4 text-center">
             <p class="text-lg">🌾 KrishiSahayak - Farmer's Friend</p>
             <p class="text-gray-400 mt-2">Empowering farmers, one harvest at a time</p>
         </div>
     </footer>
-    
+
     <script src="script.js"></script>
 </body>
+
 </html>
